@@ -206,19 +206,28 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                text-align: center;
-            }
+    .container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center; /* Centers content horizontally */
+        gap: 20px; /* Adds space between sections */
+    }
 
-            .left-section, .right-section {
-                width: 100%;
-            }
+    .left-section, 
+    .right-section {
+        width: 100%;
+        padding: 10px; /* Adds some spacing */
+    }
 
-            .image-slider img {
-                max-width: 300px;
-            }
-        }
+    .image-slider img {
+        max-width: 100%; /* Ensures responsiveness */
+        height: auto; /* Maintains aspect ratio */
+        margin: 0 auto; /* Centers the image */
+        display: block;
+    }
+    }
+
     </style>
 </head>
 <body>
