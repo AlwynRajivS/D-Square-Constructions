@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D Square Constructions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #0a0a0a, #131212, #464544);
+            background-size: 300% 300%;
+            animation: backgroundMove 8s infinite alternate;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: left top; }
+            100% { background-position: right bottom; }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            margin-top: 15%;
+            max-width: 1200px;
+            background-color: #3c3c3c;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .left-section {
+            width: 40%;
+            padding: 30px;
+            background: #2c2c2c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .flip-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            height:100px;
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            width: 350px;
+            height: 250px;
+            position: relative;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .flip-card-front {
+            background: #444;
+            color: white;
+        }
+
+        .flip-card-back {
+            background: #f4b400;
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px;
+            line-height: 1.8;
+        }
+
+        .right-section {
+            width: 60%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .image-slider {
+                position: relative;
+                width: 100%;  /* Adjusts to full width of parent container */
+                max-width: 800px; /* Set a max width for better responsiveness */
+                height: 400px; /* Adjust height as needed */
+                overflow: hidden;
+        }
+
+        .image-slider img {
+            width: 100%; /* Makes the image take full width of the container */
+            height: 100%; /* Makes the image take full height of the container */
+            object-fit: cover; /* Ensures the image fills the container without distortion */
+            border-radius: 10px;
+            position: absolute;
+            display: none;
+        }
+
+        .image-slider img.active {
+                display: block;
+        }
+
+        .overlay {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-section img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .qr-section img:active {
+            transform: scale(1.5);
+        }
+
+        .contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 5px 0;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff4500;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            animation: bounce 2s infinite;
+        }
+
+        .floating-btn:hover {
+            background: #ff6347;
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+            }
+
+            .image-slider img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+                <img src="logo.jpeg" alt="D Square Logo">
+            </div>
+            <h1>D SQUARE CONSTRUCTIONS</h1>
+            <p class="tagline">ELEVATE YOUR STATUS</p>
+            <div class="flip-card-container">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">Our Services</div>
+                        <div class="flip-card-back">
+                            PLAN AND ELEVATIONS<br>
+                            PLAN APPROVALS<br>
+                            CONSULTING<br>
+                            BUILDING CONSTRUCTION<br>
+                            BUILDING REMODELING/RENOVATION<br>
+                            INTERIOR WORKS</div>
+                        </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">Why Choose Us?</div>
+                        <div class="flip-card-back">
+                            BUDGET FRIENDLY<br>
+                            FRAMED STRUCTURES<br>
+                            CONTEMPORARY ELEVATIONS<br>
+                            UNIQUE DESIGNS<br>
+                            PERFECT INTERIORS<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="image-slider">
+                <img src="photo1.jpeg" class="active" alt="House 1">
+                <img src="photo2.jpeg" alt="House 2">
+                <img src="photo3.jpeg" alt="House 3">
+            </div>
+            <div class="overlay">
+                <div class="qr-section">
+                    <img src="qrcode.jpeg" alt="QR Code">
+                    <p>Scan here for our ongoing projects</p>
+                </div>
+                <div class="contact">
+                    <h2>Contact Us</h2>
+                    <p>📞 7373346695, 8667637141</p>
+                    <p>📧 dsquareconstructions2@gmail.com</p>
+                    <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="tel:7373346695" class="floating-btn">Call Us</a>
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll(".image-slider img");
+    
+        function changeImage() {
+            images[index].classList.remove("active");
+            index = (index + 1) % images.length;
+            images[index].classList.add("active");
+        }
+    
+        setInterval(changeImage, 3000); // Change image every 3 seconds
+    </script>
+</body>
+</html>
