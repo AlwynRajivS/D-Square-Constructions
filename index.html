@@ -20,7 +20,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             padding: 20px;
         }
 
@@ -33,11 +33,11 @@
             display: flex;
             flex-wrap: wrap;
             width: 90%;
+            margin-top: 15%;
             max-width: 1200px;
             background-color: #3c3c3c;
             border-radius: 10px;
             overflow: hidden;
-            padding: 20px;
         }
 
         .left-section {
@@ -70,13 +70,13 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            width: 100%;
+            height:100px;
         }
 
         .flip-card {
             perspective: 1000px;
-            width: 300px;
-            height: 200px;
+            width: 350px;
+            height: 250px;
             position: relative;
         }
 
@@ -102,10 +102,8 @@
             align-items: center;
             justify-content: center;
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;
             font-weight: bold;
-            text-align: center;
-            font-size: 16px;
         }
 
         .flip-card-front {
@@ -120,11 +118,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            line-height: 2;
+            padding: 10px;
+            line-height: 1.8;
         }
 
         .right-section {
             width: 60%;
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -133,29 +133,52 @@
         }
 
         .image-slider {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            overflow: hidden;
+                position: relative;
+                width: 100%;  /* Adjusts to full width of parent container */
+                max-width: 800px; /* Set a max width for better responsiveness */
+                height: 400px; /* Adjust height as needed */
+                overflow: hidden;
         }
 
         .image-slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; /* Makes the image take full width of the container */
+            height: 100%; /* Makes the image take full height of the container */
+            object-fit: cover; /* Ensures the image fills the container without distortion */
             border-radius: 10px;
             position: absolute;
             display: none;
         }
 
         .image-slider img.active {
-            display: block;
+                display: block;
+        }
+
+        .overlay {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-section img {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .qr-section img:active {
+            transform: scale(1.5);
         }
 
         .contact {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .contact p {
+            margin: 5px 0;
         }
 
         .floating-btn {
@@ -169,7 +192,17 @@
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
-            text-decoration: none;
+            animation: bounce 2s infinite;
+        }
+
+        .floating-btn:hover {
+            background: #ff6347;
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         @media (max-width: 768px) {
@@ -182,19 +215,8 @@
                 width: 100%;
             }
 
-            .flip-card-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .flip-card {
-                width: 90%;
-                max-width: 350px;
-            }
-
-            .image-slider {
-                max-width: 350px;
-                height: auto;
+            .image-slider img {
+                max-width: 300px;
             }
         }
     </style>
@@ -202,6 +224,9 @@
 <body>
     <div class="container">
         <div class="left-section">
+            <div class="logo">
+                <img src="logo.jpeg" alt="D Square Logo">
+            </div>
             <h1>D SQUARE CONSTRUCTIONS</h1>
             <p class="tagline">ELEVATE YOUR STATUS</p>
             <div class="flip-card-container">
@@ -214,7 +239,18 @@
                             CONSULTING<br>
                             BUILDING CONSTRUCTION<br>
                             BUILDING REMODELING/RENOVATION<br>
-                            INTERIOR WORKS
+                            INTERIOR WORKS</div>
+                        </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">Why Choose Us?</div>
+                        <div class="flip-card-back">
+                            BUDGET FRIENDLY<br>
+                            FRAMED STRUCTURES<br>
+                            CONTEMPORARY ELEVATIONS<br>
+                            UNIQUE DESIGNS<br>
+                            PERFECT INTERIORS<br>
                         </div>
                     </div>
                 </div>
@@ -226,18 +262,32 @@
                 <img src="photo2.jpeg" alt="House 2">
                 <img src="photo3.jpeg" alt="House 3">
             </div>
+            <div class="overlay">
+                <div class="qr-section">
+                    <img src="qrcode.jpeg" alt="QR Code">
+                    <p>Scan here for our ongoing projects</p>
+                </div>
+                <div class="contact">
+                    <h2>Contact Us</h2>
+                    <p>📞 7373346695, 8667637141</p>
+                    <p>📧 dsquareconstructions2@gmail.com</p>
+                    <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
+                </div>
+            </div>
         </div>
     </div>
     <a href="tel:7373346695" class="floating-btn">Call Us</a>
     <script>
         let index = 0;
         const images = document.querySelectorAll(".image-slider img");
+    
         function changeImage() {
             images[index].classList.remove("active");
             index = (index + 1) % images.length;
             images[index].classList.add("active");
         }
-        setInterval(changeImage, 3000);
+    
+        setInterval(changeImage, 3000); // Change image every 3 seconds
     </script>
 </body>
 </html>
