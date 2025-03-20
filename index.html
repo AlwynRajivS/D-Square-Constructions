@@ -8,26 +8,48 @@
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            background: url('photo1.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+                margin: 0;
+                padding: 0;
+                color: #fff;
+                background: url('photo1.jpeg') no-repeat center center fixed;
+                background-size: cover; /* Ensures full-screen coverage */
+                height: 100vh;
+                width: 100vw; /* Full width */
+                display: flex;
+                flex-direction: column;
+                justify-content: center; /* Centers content vertically */
+                align-items: center; /* Centers content horizontally */
+                overflow-x: hidden;
+                margin-top: 10px;
+            }
         header {
             position: fixed;
             top: 0;
             width: 100%;
+            height: 00%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background: rgba(8, 8, 8, 0.9);
+            z-index: 100;
+            background: rgba(8, 8, 8, 0.973);
+        }
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
             z-index: 1000;
+            transition: 0.5s;
+        }
+
+        .logo {
+            height: 50px;
         }
         .menu-toggle {
             display: none;
@@ -35,41 +57,98 @@
             color: white;
             cursor: pointer;
         }
+
         nav ul {
             list-style: none;
             display: flex;
         }
+
         nav ul li {
-            margin: 10px 15px;
+            margin: 10px 20px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 16px;
+            transition: color 0.3s;
         }
-        .hero {
-            width: 100%;
-            height: 60vh;
+
+        nav ul li a:hover {
+            color: #fcee2e;
+        }
+
+        .nav-links {
+            list-style: none;
             display: flex;
-            flex-direction: column;
+        }
+
+        .nav-links li {
+            margin: 0 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        /* Smooth Scroll & Section Transitions */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 0%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 50vh;
+            display: flex;
+            margin-top: 50%;
             align-items: center;
             justify-content: center;
             text-align: center;
             background: rgba(0, 0, 0, 0.5);
+            width: 110%;
         }
+        
+
+        /* Flip Card (Services & Why Choose Us) */
         .flip-card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Two columns */
+                gap: 20px; /* Adds spacing between cards */
+                padding: 30px;
+                justify-items: center;
+                margin-top: 0px;
+                
+            }
+
         .flip-card {
             background-color: transparent;
-            width: 300px;
-            height: 200px;
-            margin: 10px;
+            width: 90%;
+            max-width: 400px;
+            height: 250px;
             perspective: 1000px;
+            margin: 15px;
+            margin-top: 0px;
+            
         }
+
         .flip-card-inner {
             position: relative;
             width: 100%;
@@ -78,9 +157,11 @@
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
+
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
         }
+
         .flip-card-front, .flip-card-back {
             position: absolute;
             width: 100%;
@@ -90,23 +171,79 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            text-align: left;
             padding: 20px;
+            border-radius: 10px;
+            left: 10;
         }
+
         .flip-card-front {
             background: rgba(0, 0, 0, 0.8);
+            font-size: 150%;
+            text-align: center;
         }
+
         .flip-card-back {
             background: #f39c12;
             color: #fff;
             transform: rotateY(180deg);
+            line-height: 2;
+            font-size: 120%;
+            align-items: left;
         }
+
+        /* Projects */
+        .projects img {
+            width: 100px;
+            margin-top: 0;
+            animation: popIn 1s ease-in-out;
+        }
+
+        /* Contact */
         .contact {
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            width:100%;
         }
-        .floating-btn {
+
+        .qr-box {
+                width: 100px; /* Adjust the box size */
+                padding: 15px;
+                background: rgba(46, 56, 66, 0.9); /* Box color */
+                border-radius: 10px;
+                text-align: center;
+                    margin: 20px auto; /* Centering */
+            }
+
+        .qr-box img {
+                    width: 100%; /* Makes the image fit inside the box */
+                    max-width: 100px; /* Limits max size */
+                    height: auto; /* Maintains aspect ratio */
+                    display: block;
+                    margin: 0 auto; /* Ensures centering */
+                }       
+                .footer-container {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 20px;
+                        max-width: 300%;
+                        width: 80%;
+                        margin: auto;
+                        padding: 20px;
+                        align-items: center;
+                        height:50%;
+                    }
+
+    .projects, .contact-info {
+        padding: 20px;
+        background: #0c0c0c;
+        height: 100%;
+        border-radius: 10px;
+        align-content: center;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .floating-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -116,11 +253,37 @@
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            animation: bounce 2s infinite;
         }
+
+        .floating-btn:hover {
+            background: #ff6347;
+            transform: scale(1.1);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+
             .menu-toggle {
                 display: block;
             }
+
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -128,64 +291,144 @@
                 top: 50px;
                 right: 10px;
                 background: rgba(0, 0, 0, 0.9);
-                padding: 10px;
+                padding: 15px;
                 border-radius: 10px;
+                text-align: center;
+                width: 200px;
             }
+
             nav ul.active {
                 display: flex;
             }
-            .hero h2 { font-size: 28px; }
-            .hero p { font-size: 16px; }
-            .flip-card { width: 90%; }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .nav-links { display: none; }
+            .flip-card { width: 100%; }
+            
+            
         }
+
+        #services {
+        display: flex;
+        justify-content: center;
+        margin-top: 0%;
+        gap: 20px;
+        }
+        
+
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.jpeg" class="logo" style="height: 50px;">
+        <img src="logo.jpeg" class="logo" style="float: left; height: 50px;">
         <div class="menu-toggle">☰</div>
+    <!-- Navigation Bar -->
         <nav>
             <ul>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#why-choose">Why Choose Us</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#projects">Ongoing Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <section class="hero">
-        <h2>D SQUARE CONSTRUCTIONS</h2>
-        <p>"Elevate Your Status"</p>
-    </section>
-    <section id="services" class="flip-card-container">
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h3>Our Services</h3>
+
+    
+
+    <!-- Hero Section -->
+    <header1 class="hero">
+        <div>
+            <header1 style="display: flex; align-items: center; justify-content: space-between; padding: 10px ;">
+                <img src="logo.jpeg" class="logo" style="height: 100px;margin-left:30px;margin-right: 20px;">
+                <h2 style="margin: 0; font-size: 58px;">D SQUARE CONSTRUCTIONS</h2>
+            </header1>
+            <p style="margin-top: 1px; font-size: 20px;">"Elevate Your Status"</p>
+        </div>
+    </header1>
+
+    <!-- Services Section (Flip Card) -->
+    <section id="services">
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Our Services</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li>Plan and Elevations</li>
+                            <li>Plan Approvals</li>
+                            <li>Consulting</li>
+                            <li>Building Construction</li>
+                            <li>Building Remodeling / Renovation</li>
+                            <li>Interior Works</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="flip-card-back">
-                    <ul>
-                        <li>Plan & Elevations</li>
-                        <li>Consulting</li>
-                        <li>Construction</li>
-                        <li>Renovation</li>
-                        <li>Interior Works</li>
-                    </ul>
+            </div>
+        </div>
+        <div class="flip-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Why Choose Us</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li>Budget Friendly</li>
+                            <li>Framed Structures</li>
+                            <li>Contemporary Elevations</li>
+                            <li>Unique Designs</li>
+                            <li>Perfect Interiors</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+      
+    <!-- Contact Section -->
     <footer id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <p>📞 7373346695, 8667637141</p>
-        <p>📧 dsquareconstructions2@gmail.com</p>
-        <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
+        <div class="footer-container">
+            <!-- Left Column - Ongoing Projects -->
+            <section id="projects" class="projects">
+                <h2>Ongoing Projects</h2>
+                <p>Scan the QR code to explore our latest projects.</p>
+                <div class="qr-box">
+                    <img src="qrcode.jpeg" alt="QR Code">
+                </div>
+            </section>
+    
+            <!-- Right Column - Contact Info -->
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                    <p>📞 7373346695, 8667637141</p>
+                    <p>📧 dsquareconstructions2@gmail.com</p>
+                    <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
+            </div>
+        </div>
     </footer>
     <a href="tel:7373346695" class="floating-btn">Call Us</a>
     <script>
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
+        // Smooth Scroll Animation
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll("section").forEach(sec => {
+                if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+                    sec.classList.add("show");
+                }
+            });
         });
     </script>
+
 </body>
 </html>
