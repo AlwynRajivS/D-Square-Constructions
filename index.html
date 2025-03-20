@@ -65,7 +65,40 @@
         }
 
                 /* Smooth Scroll & Section Transitions */
-        section {
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 10px;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 15px;
+                border-radius: 10px;
+                text-align: center;
+                width: 200px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            section {
             padding: 80px 20px;
             text-align: center;
             margin-top: 0%;
@@ -242,52 +275,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 50px;
-                right: 10px;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 15px;
-                border-radius: 10px;
-                text-align: center;
-                width: 200px;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            nav ul li a {
-                font-size: 18px;
-                font-weight: bold;
-            }
-            .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1.2em; }
-            .nav-links { display: none; }
-            .flip-card { width: 100%; }
-            
-            
-        }
-
-        #services {
-        display: flex;
-        justify-content: center;
-        margin-top: 0%;
-        gap: 20px;
-        }
         
 
     </style>
