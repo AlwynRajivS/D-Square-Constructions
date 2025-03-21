@@ -11,7 +11,6 @@
             text-align: center;
             background: url('photo1.jpeg') no-repeat center center fixed;
             background-size: cover;
-
         }
         .container {
             position: relative;
@@ -23,7 +22,6 @@
             justify-content: flex-start;
             padding: 20px;
         }
-        /* Header Box */
         .header-box {
             background: rgba(255,255,255, 0.8);
             padding: 15px 30px;
@@ -33,9 +31,9 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 90%;
-height:160px;
-line-height: 0.5;
+            max-width: 80%;
+            height: 160px;
+            line-height: 0.5;
         }
         .logo {
             width: 80px;
@@ -45,54 +43,64 @@ line-height: 0.5;
             font-style: italic;
             margin-top: 0px;
         }
-        .flip-container, .info-container {
+
+        /* Row Containers */
+        .row {
             display: flex;
+            justify-content: center;
             gap: 20px;
-            margin-top: 30px;
             flex-wrap: wrap;
-            justify-content: center;
-width : 90%
-        }
-        .flip-card {
-            width: 250px;
-            height: 150px;
-            perspective: 1000px;
-        }
-        .flip-inner {
             width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            position: relative;
-        }
-        .flip-card:hover .flip-inner {
-            transform: rotateY(180deg);
-        }
-        .flip-front, .flip-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-        }
-        .flip-front {
-            background: #007bff;
-            color: white;
-        }
-        .flip-back {
-            background: #17a2b8;
-            color: white;
-            transform: rotateY(180deg);
+            max-width: 800px;
+            margin-top: 20px;
         }
 
-.flip-back p {
-        margin: 5px 0;
-        text-align: center;
-    }
+        /* Dropdown Box Style */
+        .dropdown-box {
+            width: 250px;
+            height: 20px;
+            background-color: rgba(39, 39, 38, 0.8); /* 80% opacity */
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dropdown-box:hover {
+            background: #16e9f8;
+            color: rgb(17, 17, 17);
+        }
+
+        /* Hidden Content Box with animation */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            background-color: rgba(70, 70, 68, 0.8); /* 80% opacity */
+            color: white;
+            padding: 0 10px;
+            border-radius: 10px;
+            margin-top: 5px;
+            width: 250px;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .dropdown-content p {
+            margin: 5px 0;
+        }
+
+        .dropdown-content.show {
+            max-height: 200px;
+            padding: 10px;
+            opacity: 1;
+        }
+
         /* Info Box */
         .info-box {
             background: rgba(255, 255, 255, 0.8);
@@ -106,6 +114,7 @@ width : 90%
             width: 100px;
             height: 100px;
         }
+
         /* Floating Call Button */
         .call-button {
             position: fixed;
@@ -124,18 +133,9 @@ width : 90%
             transform: scale(1.1);
         }
 
-
-        /* Mobile Responsive Fix */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                justify-content: flex-start;
-                padding-top: 20px;
-            }
-            .flip-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .info-container {
+            .row {
                 flex-direction: column;
                 align-items: center;
             }
@@ -151,33 +151,49 @@ width : 90%
             <p class="slogan">Elevate Your Status</p>
         </div>
 
-        <!-- Flip Cards -->
-        <section class="flip-container">
-            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><h2>Our Services</h2></div><div class="flip-back">
+        <!-- First Row: Our Services & Why Choose Us -->
+        <div class="row">
+            <div class="dropdown-box" onclick="toggleDropdown('services')">Our Services</div>
+            <div class="dropdown-box" onclick="toggleDropdown('why-choose-us')">Why Choose Us?</div>
+        </div>
+        <div class="row">
+            <div id="services" class="dropdown-content">
+                <p>Plan & Elevations</p>
+                <p>Plan Approvals</p>
+                <p>Consulting</p>
+                <p>Building Construction</p>
+                <p>Building Remodeling / Renovation</p>
+                <p>Interior Works</p>
+            </div>
+            <div id="why-choose-us" class="dropdown-content">
+                <p>Expert team, cutting-edge technology, and excellent support.</p>
+            </div>
+        </div>
 
-<p>Plan & Elevations</p>
-<p>Consulting</p>
-<p>Construction</p>
-<p>Renovation</p>
-<p>Interior Works</p>
-
-</div></div></div>
-            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><h2>Why Choose Us?</h2></div><div class="flip-back"><p>Expert team, cutting-edge technology, and excellent support.</p></div></div></div>
-        </section>
-
-        <!-- Current Project & Contact Us -->
-        <section class="info-container">
-            <div class="info-box"><h2>Current Project</h2><img src="qrcode.jpeg" alt="Project QR Code"><p>Scan to explore our latest project</p></div>
-            <div class="info-box"><h2>Contact Us</h2>
-<p>📞 7373346695, 8667637141</p>
-        <p>📧 dsquareconstructions2@gmail.com</p>
-        <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
-
-</div>
-        </section>
+        <!-- Second Row: Current Project & Contact Us -->
+        <div class="row">
+            <div class="info-box">
+                <h2>Current Project</h2>
+                <img src="qrcode.jpeg" alt="Project QR Code">
+                <p>Scan to explore our latest project</p>
+            </div>
+            <div class="info-box">
+                <h2>Contact Us</h2>
+                <p>📞 7373346695, 8667637141</p>
+                <p>📧 dsquareconstructions2@gmail.com</p>
+                <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
+            </div>
+        </div>
 
         <!-- Floating Call Button -->
         <a href="tel:7373346695" class="call-button">&#9742;</a>
     </div>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.classList.toggle("show");
+        }
+    </script>
 </body>
 </html>
