@@ -78,6 +78,22 @@
         .flip-card:hover .flip-inner {
             transform: rotateX(180deg);
         }
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lightblue;
+    border: 1px solid #ccc;
+}
+
+.back {
+    transform: rotateX(180deg);
+}
         .flip-front, .flip-back {
             position: absolute;
             width: 100%;
@@ -172,7 +188,7 @@
                         <h2>Our Services</h2>
                     </div>
                     <div class="flip-back">
-                        <p>Plan & Elevations</p>
+                        <p class="back">Plan & Elevations</p>
                         <p>Consulting</p>
                         <p>Construction</p>
                         <p>Renovation</p>
