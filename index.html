@@ -3,166 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D Square Constructions</title>
+    <title>Company Name</title>
     <style>
-        /* General Styles */
         body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                color: #fff;
-                background: url('photo1.jpeg') no-repeat center center fixed;
-                background-size: cover; /* Ensures full-screen coverage */
-                height: 100vh;
-                width: 100vw; /* Full width */
-                display: flex;
-                flex-direction: column;
-                justify-content: center; /* Centers content vertically */
-                align-items: center; /* Centers content horizontally */
-                overflow-x: hidden;
-                margin-top: 10px;
-            }
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 100;
-            background: rgba(8, 8, 8, 0.973);
-        }
-        /* Navbar */
-        .navbar {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: 0.5s;
-        }
-
-        .logo {
-            height: 50px;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 26px;
-            color: white;
-            cursor: pointer;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin: 10px 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #fcee2e;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin: 0 10px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1em;
-            transition: color 0.3s ease-in-out;
+            margin: 0;
+            font-family: Arial, sans-serif;
             text-align: center;
+            background-size: cover;
+            background-position: center;
+            transition: background 1s ease-in-out;
         }
-
-        .nav-links a:hover {
-            color: #f39c12;
-        }
-
-        /* Smooth Scroll & Section Transitions */
-        section {
-            padding: 80px 20px;
-            text-align: center;
-            margin-top: 0%;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 50vh;
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
             display: flex;
-            margin-top: 50%;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            width: 110%;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
         }
-        
-
-        /* Flip Card (Services & Why Choose Us) */
-        .flip-card-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Two columns */
-                gap: 20px; /* Adds spacing between cards */
-                padding: 30px;
-                justify-items: center;
-                margin-top: 0px;
-                
-            }
-
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Header Box with Slide-in Effect */
+        .header-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: slideIn 1s ease-out 0.5s forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+        .slogan {
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .flip-container, .info-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
         .flip-card {
-            background-color: transparent;
-            width: 90%;
-            max-width: 400px;
-            height: 250px;
+            width: 250px;
+            height: 150px;
             perspective: 1000px;
-            margin: 15px;
-            margin-top: 0px;
-            
+            transition: transform 0.3s ease;
         }
-
-        .flip-card-inner {
-            position: relative;
+        .flip-card:hover {
+            transform: scale(1.05);
+        }
+        .flip-inner {
             width: 100%;
             height: 100%;
             text-align: center;
             transition: transform 0.6s;
             transform-style: preserve-3d;
+            position: relative;
         }
-
-        .flip-card:hover .flip-card-inner {
+        .flip-card:hover .flip-inner {
             transform: rotateY(180deg);
         }
-
-        .flip-card-front, .flip-card-back {
+        .flip-front, .flip-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -170,265 +90,87 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            text-align: left;
-            padding: 20px;
             border-radius: 10px;
-            left: 10;
         }
-
-        .flip-card-front {
-            background: rgba(0, 0, 0, 0.8);
-            font-size: 150%;
-            text-align: center;
+        .flip-front {
+            background: #007bff;
+            color: white;
         }
-
-        .flip-card-back {
-            background: #f39c12;
-            color: #fff;
+        .flip-back {
+            background: #17a2b8;
+            color: white;
             transform: rotateY(180deg);
-            line-height: 2;
-            font-size: 120%;
-            align-items: left;
         }
-
-        /* Projects */
-        .projects img {
+        /* Info Box with Slide-in Effect */
+        .info-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1s ease-out 0.7s forwards;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .info-box img {
             width: 100px;
-            margin-top: 0;
-            animation: popIn 1s ease-in-out;
+            height: 100px;
         }
-
-        /* Contact */
-        .contact {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            width:100%;
-        }
-
-        .qr-box {
-                width: 100px; /* Adjust the box size */
-                padding: 15px;
-                background: rgba(46, 56, 66, 0.9); /* Box color */
-                border-radius: 10px;
-                text-align: center;
-                    margin: 20px auto; /* Centering */
-            }
-
-        .qr-box img {
-                    width: 100%; /* Makes the image fit inside the box */
-                    max-width: 100px; /* Limits max size */
-                    height: auto; /* Maintains aspect ratio */
-                    display: block;
-                    margin: 0 auto; /* Ensures centering */
-                }       
-                .footer-container {
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        gap: 20px;
-                        max-width: 300%;
-                        width: 80%;
-                        margin: auto;
-                        padding: 20px;
-                        align-items: center;
-                        height:50%;
-                    }
-
-    .projects, .contact-info {
-        padding: 20px;
-        background: #0c0c0c;
-        height: 100%;
-        border-radius: 10px;
-        align-content: center;
-        text-align: center;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .floating-btn {
+        /* Floating Call Button with Hover Effect */
+        .call-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #ff4500;
+            background: #28a745;
             color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-            animation: bounce 2s infinite;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            text-decoration: none;
         }
-
-        .floating-btn:hover {
-            background: #ff6347;
-            transform: scale(1.1);
+        .call-button:hover {
+            transform: scale(1.1) rotate(10deg);
         }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 50px;
-                right: 10px;
-                background: rgba(0, 0, 0, 0.9);
-                padding: 15px;
-                border-radius: 10px;
-                text-align: center;
-                width: 200px;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            nav ul li a {
-                font-size: 18px;
-                font-weight: bold;
-            }
-            .hero h1 { font-size: 2.5em; }
-            .hero p { font-size: 1.2em; }
-            .nav-links { display: none; }
-            .flip-card { width: 100%; }
-            
-            
-        }
-
-        #services {
-        display: flex;
-        justify-content: center;
-        margin-top: 0%;
-        gap: 20px;
-        }
-        
-
     </style>
+    <script>
+        const images = ['background1.jpg', 'background2.jpg', 'background3.jpg', 'background4.jpg'];
+        function changeBackground() {
+            document.body.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)]}')`;
+        }
+        setInterval(changeBackground, 5000);
+        changeBackground();
+    </script>
 </head>
 <body>
-    <header>
-        <img src="logo.jpeg" class="logo" style="float: left; height: 50px;">
-        <div class="menu-toggle">☰</div>
-    <!-- Navigation Bar -->
-        <nav>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-choose">Why Choose Us</a></li>
-                <li><a href="#projects">Ongoing Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    
-
-    <!-- Hero Section -->
-    <header1 class="hero">
-        <div>
-            <header1 style="display: flex; align-items: center; justify-content: space-between; padding: 10px ;">
-                <img src="logo.jpeg" class="logo" style="height: 100px;margin-left:30px;margin-right: 20px;">
-                <h2 style="margin: 0; font-size: 58px;">D SQUARE CONSTRUCTIONS</h2>
-            </header1>
-            <p style="margin-top: 1px; font-size: 20px;">"Elevate Your Status"</p>
+    <div class="container">
+        <!-- Header Section with Transparent Background -->
+        <div class="header-box">
+            <img src="logo.png" alt="Company Logo" class="logo">
+            <h1>Company Name</h1>
+            <p class="slogan">Your Trusted Partner for Innovation</p>
         </div>
-    </header1>
 
-    <!-- Services Section (Flip Card) -->
-    <section id="services">
-        <div class="flip-card-container">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h3>Our Services</h3>
-                    </div>
-                    <div class="flip-card-back">
-                        <ul>
-                            <li>Plan and Elevations</li>
-                            <li>Plan Approvals</li>
-                            <li>Consulting</li>
-                            <li>Building Construction</li>
-                            <li>Building Remodeling / Renovation</li>
-                            <li>Interior Works</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flip-card-container">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h3>Why Choose Us</h3>
-                    </div>
-                    <div class="flip-card-back">
-                        <ul>
-                            <li>Budget Friendly</li>
-                            <li>Framed Structures</li>
-                            <li>Contemporary Elevations</li>
-                            <li>Unique Designs</li>
-                            <li>Perfect Interiors</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Flip Cards -->
+        <section class="flip-container">
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><h2>Our Purpose</h2></div><div class="flip-back"><p>We strive to deliver top-notch solutions with innovative approaches.</p></div></div></div>
+            <div class="flip-card"><div class="flip-inner"><div class="flip-front"><h2>Why Choose Us?</h2></div><div class="flip-back"><p>Expert team, cutting-edge technology, and excellent support.</p></div></div></div>
+        </section>
 
-      
-    <!-- Contact Section -->
-    <footer id="contact" class="contact">
-        <div class="footer-container">
-            <!-- Left Column - Ongoing Projects -->
-            <section id="projects" class="projects">
-                <h2>Ongoing Projects</h2>
-                <p>Scan the QR code to explore our latest projects.</p>
-                <div class="qr-box">
-                    <img src="qrcode.jpeg" alt="QR Code">
-                </div>
-            </section>
-    
-            <!-- Right Column - Contact Info -->
-            <div class="contact-info">
-                <h2>Contact Us</h2>
-                    <p>📞 7373346695, 8667637141</p>
-                    <p>📧 dsquareconstructions2@gmail.com</p>
-                    <p>📍 25, Patel Street, Koodalnagar 7th Street, Madurai-18</p>
-            </div>
-        </div>
-    </footer>
-    <a href="tel:7373346695" class="floating-btn">Call Us</a>
-    <script>
-        // Smooth Scroll Animation
-        document.addEventListener("scroll", function() {
-            document.querySelectorAll("section").forEach(sec => {
-                if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-                    sec.classList.add("show");
-                }
-            });
-        });
-    </script>
+        <!-- Current Project & Contact Us -->
+        <section class="info-container">
+            <div class="info-box"><h2>Current Project</h2><img src="qrcode.png" alt="Project QR Code"><p>Scan to explore our latest project</p></div>
+            <div class="info-box"><h2>Contact Us</h2><p>Email: contact@company.com</p><p>Phone: +123 456 7890</p></div>
+        </section>
 
+        <!-- Floating Call Button -->
+        <a href="tel:+1234567890" class="call-button">&#9742;</a>
+    </div>
 </body>
 </html>
