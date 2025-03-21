@@ -9,28 +9,20 @@
             margin: 0;
             font-family: Arial, sans-serif;
             text-align: center;
+            background: url('background.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            transition: background 1s ease-in-out;
         }
         .container {
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 20px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-in-out forwards;
         }
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Header Box with Slide-in Effect */
+        /* Header Box */
         .header-box {
             background: rgba(255, 255, 255, 0.8);
             padding: 15px 30px;
@@ -39,13 +31,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transform: translateY(-50px);
-            opacity: 0;
-            animation: slideIn 1s ease-out 0.5s forwards;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            width: 90%;
+            max-width: 500px;
         }
         .logo {
             width: 80px;
@@ -66,10 +53,6 @@
             width: 250px;
             height: 150px;
             perspective: 1000px;
-            transition: transform 0.3s ease;
-        }
-        .flip-card:hover {
-            transform: scale(1.05);
         }
         .flip-inner {
             width: 100%;
@@ -101,7 +84,7 @@
             color: white;
             transform: rotateY(180deg);
         }
-        /* Info Box with Slide-in Effect */
+        /* Info Box */
         .info-box {
             background: rgba(255, 255, 255, 0.8);
             padding: 15px;
@@ -109,19 +92,12 @@
             width: 250px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease-out 0.7s forwards;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
         .info-box img {
             width: 100px;
             height: 100px;
         }
-        /* Floating Call Button with Hover Effect */
+        /* Floating Call Button */
         .call-button {
             position: fixed;
             bottom: 20px;
@@ -136,23 +112,30 @@
             text-decoration: none;
         }
         .call-button:hover {
-            transform: scale(1.1) rotate(10deg);
+            transform: scale(1.1);
+        }
+        /* Mobile Responsive Fix */
+        @media (max-width: 768px) {
+            .container {
+                justify-content: flex-start;
+                padding-top: 20px;
+            }
+            .flip-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
-    <script>
-        const images = ['photo1.jpeg', 'photo2.jpeg', 'photo3.jpeg'];
-        function changeBackground() {
-            document.body.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)]}')`;
-        }
-        setInterval(changeBackground, 5000);
-        changeBackground();
-    </script>
 </head>
 <body>
     <div class="container">
-        <!-- Header Section with Transparent Background -->
+        <!-- Header Section -->
         <div class="header-box">
-            <img src="logo.jpeg" alt="Company Logo" class="logo">
+            <img src="logo.png" alt="Company Logo" class="logo">
             <h1>Company Name</h1>
             <p class="slogan">Your Trusted Partner for Innovation</p>
         </div>
